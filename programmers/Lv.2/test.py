@@ -1,1 +1,3 @@
-print("ㅎㅇ")
+print("hello")
+
+print("what?")
