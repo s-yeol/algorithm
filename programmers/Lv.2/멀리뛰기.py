@@ -8,21 +8,16 @@
 
 그래서 DFS + 메모이제이션 적용 했으나 재귀함수 깊이 초과로
 런타임 에러 발생
+
+DP를 사용하여 해결
 '''
 def solution(n):
-    memo = {}
-    def dfs(total):
-        
-        if total in memo:
-            return memo[total]
-        
-        if total == n:
-            return 1
+    dp = [0] * (n + 2)
 
-        if total > n:
-            return 0
+    dp[1] = 1
+    dp[2] = 2
 
-        memo[total] = dfs(total + 1) + dfs(total + 2)
-        return memo[total]
-    
-    return dfs(0) % 1234567
+    for i in range(3, n + 1):
+        dp[i] = (dp[i-1] + dp[i-2]) % 1234567
+
+    return dp[n]
